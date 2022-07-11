@@ -15,7 +15,6 @@ import { KeyboardAvoidingView, View, BackHandler } from "react-native";
 
 const db = firebase.firestore();
 const chatCollection = db.collection("chats");
-import { NavigationActions, useNavigationState } from "react-navigation";
 
 export default function Chats({ route: { params }, navigation }) {
 	// const [messages, setMessages] = useState([{
@@ -110,6 +109,8 @@ export default function Chats({ route: { params }, navigation }) {
 					name: res.nickname,
 					image: res.image.uri,
 					email: res.email,
+					phone: res.phone,
+					gender: res.gender,
 				};
 				setUser(values);
 			})
@@ -149,6 +150,7 @@ export default function Chats({ route: { params }, navigation }) {
 
 				return () => unsub();
 			} catch (e) {
+				console.log(e)
 				alert("Login Again");
 			}
 		}
@@ -194,6 +196,7 @@ export default function Chats({ route: { params }, navigation }) {
 				try {
 					chatCollection.add(m);
 				} catch (e) {
+					console.log(e)
 					alert("Login Again");
 				}
 			});
@@ -237,6 +240,8 @@ export default function Chats({ route: { params }, navigation }) {
 					name: user.name,
 					avatar: user.image,
 					email: user.email,
+					phone: user?.phone,
+					gender: user.gender,
 				}}
 			/>
 			<KeyboardAvoidingView

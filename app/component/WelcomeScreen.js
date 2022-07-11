@@ -15,7 +15,7 @@ import AppButton from "./AppButton";
 // import { authentication } from "../../firebase-config";
 import colors from "../config/colors";
 
-import * as Facebook from "expo-facebook";
+// import * as Facebook from "expo-facebook";
 // import * as Google from "expo-google-app-auth";
 // import * as Expo from "expo-google-sign-in";
 import Screen from "./Screen";
@@ -37,7 +37,7 @@ export default function WelcomeScreen({ navigation }) {
 	const { user } = useContext(UserContext);
 
 	function aler(value) {
-		setAler(value);
+		setAler($`value`);
 		setTimeout(() => {
 			setAler(undefined);
 		}, 3000);

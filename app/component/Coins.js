@@ -9,7 +9,6 @@ import {
 	Button,
 	TouchableOpacity,
 } from "react-native";
-import { NavigationEvents } from "react-navigation";
 import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 

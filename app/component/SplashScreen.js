@@ -3,7 +3,7 @@ import { Animated, Dimensions, Image, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { NavigationContainer } from "@react-navigation/native";
-// import AuthNavigator from "./navigation/AuthNavigator";
+import AuthNavigator from "./navigation/AuthNavigator";
 import UnAuthNavigator from "./navigation/UnAuthNavigator";
 import { LogBox } from "react-native";
 // Logo....
@@ -167,8 +167,7 @@ export default function SplashScreen() {
 			</NavigationContainer> */}
 				{/* <AuthContext.Provider value={{ user, setUser }}> */}
 				<NavigationContainer>
-					{/* {user ? <AuthNavigator /> : <UnAuthNavigator />} */}
-					{<UnAuthNavigator />}
+					{user ? <AuthNavigator /> : <UnAuthNavigator />}
 				</NavigationContainer>
 				{/* </AuthContext.Provider> */}
 			</Animated.View>

@@ -65,10 +65,12 @@ const Messages = ({ navigation }) => {
 								} else {
 									d = {
 										id: recei._id,
+										gender: recei.gender,
+										phone: recei.phone,
 										name: recei.name,
 										email: recei?.email,
 										image: { uri: recei.avatar },
-										message: recei.text,
+										message: res.text,
 									};
 								}
 								values.push(d);
@@ -89,7 +91,7 @@ const Messages = ({ navigation }) => {
 						// });
 					})
 					.catch((err) => {
-						aler(err);
+						aler(`${err}`);
 						setPreloader(false);
 					});
 			} catch (err) {

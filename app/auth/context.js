@@ -1,6 +1,6 @@
 import React from "react";
 import authStorage from "../auth/storage";
-import { customPost, post } from "../../firebase";
+import { customPost, post, firebase } from "../../firebase";
 const AuthContext = React.createContext();
 
 // @function  UserContext
@@ -50,6 +50,11 @@ const UserProvider = ({ children }) => {
 					.then((res) => {})
 					.catch((res) => {});
 			}
+			firebase
+			.auth()
+			.signOut()
+			.then(() => {})
+			.catch((error) => {	});
 		});
 
 		authStorage.removeToken();

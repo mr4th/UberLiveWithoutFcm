@@ -67,7 +67,7 @@ const Home = ({ navigation }) => {
 			if (user) {
 				// var uid = user.uid;
 			} else {
-				aler("Your Chats and Call History will not work");
+				aler("You need to Logout and Login Again!");
 			}
 		});
 	}, []);
@@ -79,7 +79,7 @@ const Home = ({ navigation }) => {
 				if (res == null) return navigation.navigate("Login");
 				return;
 			} catch (e) {
-				aler(e);
+				aler(`${e}`);
 			}
 		})();
 	}, []);
@@ -89,16 +89,16 @@ const Home = ({ navigation }) => {
 		addFavourite(favourite, user)
 			.then((res) => {
 				setPreloader(false);
-				aler(res);
+				aler(`${res}`);
 			})
 			.catch((e) => {
-				aler(e);
+				aler(`${e}`);
 				setPreloader(false);
 			});
 	}
 
 	useEffect(() => {
-		const res = getSaved("user")
+		( ()=>{const res = getSaved("user")
 			.then((res) => {
 				if (res == null) {
 					return navigation.navigate("Login");
@@ -123,13 +123,13 @@ const Home = ({ navigation }) => {
 			})
 			.catch((err) => {
 				setPreloader(false);
-				aler(err);
+				aler(`${err}`);
 
 				if (err.indexOf("Login") > -1) {
 					logout();
 				}
 			});
-
+	})()
 		// });
 		// if(!user){navigation.navigate("Login")}
 	}, []);

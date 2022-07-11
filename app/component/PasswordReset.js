@@ -39,7 +39,7 @@ export default function PasswordReset({ navigation }) {
 
 	
 	function aler(value) {
-		setAler(value);
+		setAler(`${value}`);
 		setTimeout(() => {
 			setAler(undefined);
 		}, 3000);

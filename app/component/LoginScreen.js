@@ -45,17 +45,10 @@ export default function LoginScreen({ navigation }) {
 	const [ale, setAler] = useState(undefined);
 	const { user, login } = useContext(UserContext);
 
-	useEffect(() => {
-		if (user == null) {
-			// return false;
-		}
-		if (typeof user == "object" && user !== null) {
-			 navigation.navigate("Home");
-		}
-	}, []);
+
 
 	function aler(value) {
-		setAler(value);
+		setAler(`${value}`);
 		setTimeout(() => {
 			setAler(undefined);
 		}, 3000);
@@ -110,8 +103,8 @@ export default function LoginScreen({ navigation }) {
 							aler("Welcome");
 
 							setTimeout(() => {
-								// login(res?.message ?? res);
-								navigation.navigate("PasswordReset");
+								login(res?.message ?? res);
+								// navigation.navigate("PasswordReset");
 							}, 2000);
 						})
 						.catch((err) => {

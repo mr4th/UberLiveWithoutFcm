@@ -84,7 +84,7 @@ const Messages = ({ navigation }) => {
 						// });
 					})
 					.catch((err) => {
-						aler(err);
+						aler(`${err}`);
 						setPreloader(false);
 					});
 			} catch (err) {

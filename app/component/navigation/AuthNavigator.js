@@ -1,7 +1,7 @@
-/*import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
-import messaging from "@react-native-firebase/messaging";
+// import messaging from "@react-native-firebase/messaging";
 
 import Forms from "../Forms";
 import LoginScreen from "../LoginScreen";
@@ -10,12 +10,11 @@ import Chats from "../Chats";
 import { Home, Profile, Messages, Matches, CallHistory } from "../../screens";
 import BuyCoins from "../../screens";
 import Coins from "../Coins";
-import VideoCall from "../VideoCall";
+// import VideoCall from "../VideoCall";
 import UserProfile from "../UserProfile";
 import AuthContext, { UserContext } from "../../auth/context";
-import CryptoPay from "../CryptoPay";
 import PasswordReset from "../PasswordReset";
-
+/*
 import {
 	NotificationListener,
 	requestUserPermission,
@@ -23,15 +22,16 @@ import {
 } from "../../utils/pushnotification_helper";
 */
 const AuthNavigator = () => {
-/*	const { user } = useContext(UserContext);
+	const { user } = useContext(UserContext);
 	const Drawer = createNativeStackNavigator();
 	const navigation = useNavigation();
 	const [loading, setLoading] = useState(true);
 	// const [initialRoute, setInitialRoute] = useState("Chats");
 
 	useEffect(() => {
+		console.log("I am in Auth!", user)
 		// Assume a message-notification contains a "type" property in the data payload of the screen to open
-
+/*
 		messaging().onNotificationOpenedApp((remoteMessage) => {
 			console.log(
 				"Notification caused app to open from background state:",
@@ -55,28 +55,15 @@ const AuthNavigator = () => {
 				}
 				setLoading(false);
 			});
+			*/
 	}, []);
 
 	if (loading) {
-		return null;
+		//return null;
 	}
 	return (
 		<Drawer.Navigator>
-			{/* <Stack.Screen
-			name="Welcome"
-			component={WelcomeScreen}
-			options={{ headerShown: false }}
-		/> */}
-			{/* <Stack.Screen
-			name="Login"
-			component={LoginScreen}
-			options={{ headerShown: false }}
-		/> */}
-			{/*<Stack.Screen
-			name="Register"
-			component={Forms}
-			options={{ headerShown: false }}
-		/> *}
+			
 			<Drawer.Screen
 				name="Home"
 				component={Home}
@@ -106,11 +93,11 @@ const AuthNavigator = () => {
 
 			
 
-			<Drawer.Screen
+			{/* <Drawer.Screen
 				name="VideoCall"
 				component={VideoCall}
 				options={{ headerShown: false }}
-			/>
+			/> */}
 
 			<Drawer.Screen
 				name="Match"
@@ -123,24 +110,13 @@ const AuthNavigator = () => {
 				options={{ headerShown: false }}
 			/>
 			<Drawer.Screen
-				name="Crypto"
-				component={CryptoPay}
-				options={{ headerShown: false }}
-			/>
-			<Drawer.Screen
-				name="PasswordReset"
-				component={PasswordReset}
-				options={{ headerShown: false }}
-			/>
-			<Drawer.Screen
 				name="CallHistory"
 				component={CallHistory}
 				options={{ headerShown: false }}
 			/>
 		</Drawer.Navigator>
 	);
-	*/
+	
 
-	return <View></View>
 };
 export default AuthNavigator;

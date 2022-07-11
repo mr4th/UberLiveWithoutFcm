@@ -29,7 +29,7 @@ export default function ListItemDetails({
 	const [ale, setAler] = useState(undefined);
 	const [payPrice, setPayPrice] = useState(0);
 	function aler(value, duration = 0) {
-		setAler(value);
+		setAler(`${value}`);
 
 		if (duration == 0) {
 			setTimeout(() => {

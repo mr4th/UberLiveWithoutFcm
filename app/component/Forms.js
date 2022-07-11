@@ -38,7 +38,7 @@ export default function Forms({ navigation }) {
 	const [ale, setAler] = useState(undefined);
 
 	function aler(value) {
-		setAler(value);
+		setAler(`${value}`);
 		setTimeout(() => {
 			setAler(undefined);
 		}, 3000);

@@ -9,7 +9,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { LogBox } from "react-native";
 import authStorage from "./app/auth/storage";
 import { DeviceEventEmitter, Platform } from "react-native";
-import IncomingCall from "react-native-incoming-call-android";
+// import IncomingCall from "react-native-incoming-call-android";
 
 // import { Provider } from "react-redux";
 import { UserProvider, UserContext } from "./app/auth/context";

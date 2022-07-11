@@ -3,7 +3,7 @@ import React from 'react'
 
 import {useEffect} from 'react';
 import {DeviceEventEmitter, Platform} from 'react-native';
-import IncomingCall from 'react-native-incoming-call';
+// import IncomingCall from 'react-native-incoming-call';
 
  const CallScreen = async () => {
     // Listen to cancel and answer call events
@@ -12,7 +12,7 @@ import IncomingCall from 'react-native-incoming-call';
         /**
          * App open from killed state (headless mode)
         */
-        const payload = await IncomingCall.getExtrasFromHeadlessMode();
+        const payload = null//await IncomingCall.getExtrasFromHeadlessMode();
         if (payload) {
           // Start call action here. You probably want to navigate to some CallRoom screen with the payload.uuid.
         }

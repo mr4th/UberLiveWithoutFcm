@@ -15,7 +15,7 @@ const ProfileItem = ({ id, gender, phone, email, name }: ProfileItemT) => {
 	const [ale, setAler] = useState(undefined);
 
 	function aler(value) {
-		setAler(value);
+		setAler(`${value}`);
 		setTimeout(() => {
 			setAler(undefined);
 		}, 3000);

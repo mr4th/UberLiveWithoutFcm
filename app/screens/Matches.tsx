@@ -42,7 +42,7 @@ const Matches = ({ navigation }) => {
 				}, 1000);
 			})
 			.catch((err) => {
-				aler(err);
+				aler(`${err}`);
 				setPreloader(false);
 			});
 	}, []);

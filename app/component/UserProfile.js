@@ -43,7 +43,7 @@ const UserProfile = ({ navigation }) => {
 	const [callCount, setCallCount] = useState(0);
 	const [chatCount, setChatCount] = useState(-1);
 	function aler(value) {
-		setAler(value);
+		setAler(`${value}`);
 		setTimeout(() => {
 			setAler(undefined);
 		}, 3000);

@@ -80,12 +80,6 @@ const CallNavigator = () => {
 			/>
 
 			<Stack.Screen
-				name="Crypto"
-				component={CryptoPay}
-				options={{ headerShown: false }}
-			/>
-
-			<Stack.Screen
 				name="CallHistory"
 				component={CallHistory}
 				options={{ headerShown: false }}
