@@ -3,17 +3,14 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 // import messaging from "@react-native-firebase/messaging";
 
-import Forms from "../Forms";
-import LoginScreen from "../LoginScreen";
-import WelcomeScreen from "../WelcomeScreen";
 import Chats from "../Chats";
 import { Home, Profile, Messages, Matches, CallHistory } from "../../screens";
 import BuyCoins from "../../screens";
 import Coins from "../Coins";
-// import VideoCall from "../VideoCall";
+import VideoCall from "../VideoCall";
+import VideoCall2 from "../VideoCall2";
 import UserProfile from "../UserProfile";
 import AuthContext, { UserContext } from "../../auth/context";
-import PasswordReset from "../PasswordReset";
 /*
 import {
 	NotificationListener,
@@ -29,9 +26,9 @@ const AuthNavigator = () => {
 	// const [initialRoute, setInitialRoute] = useState("Chats");
 
 	useEffect(() => {
-		console.log("I am in Auth!", user)
+		console.log("I am in Auth!", user);
 		// Assume a message-notification contains a "type" property in the data payload of the screen to open
-/*
+		/*
 		messaging().onNotificationOpenedApp((remoteMessage) => {
 			console.log(
 				"Notification caused app to open from background state:",
@@ -63,12 +60,12 @@ const AuthNavigator = () => {
 	}
 	return (
 		<Drawer.Navigator>
-			
 			<Drawer.Screen
 				name="Home"
 				component={Home}
 				options={{ headerShown: false }}
 			/>
+
 			<Drawer.Screen
 				name="Profile"
 				component={Profile}
@@ -91,8 +88,6 @@ const AuthNavigator = () => {
 				options={{ headerShown: false }}
 			/>
 
-			
-
 			{/* <Drawer.Screen
 				name="VideoCall"
 				component={VideoCall}
@@ -114,9 +109,19 @@ const AuthNavigator = () => {
 				component={CallHistory}
 				options={{ headerShown: false }}
 			/>
+
+			<Drawer.Screen
+				name="VideoCall2"
+				component={VideoCall2}
+				options={{ headerShown: false }}
+			/>
+
+			<Drawer.Screen
+				name="VideoCall"
+				component={VideoCall}
+				options={{ headerShown: false }}
+			/>
 		</Drawer.Navigator>
 	);
-	
-
 };
 export default AuthNavigator;

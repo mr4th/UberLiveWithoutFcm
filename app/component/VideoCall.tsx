@@ -114,43 +114,45 @@ const VideoCall = ({ navigation, route: { params } }) => {
 
 	//send call notification if the person initiates the call
 	useEffect(() => {
-		if (Object.keys(user).length > 0) {
-			if (user.coins < 10) {
-				return navigation.navigate("Home");
-			}
+		(() => {
+			if (Object.keys(user).length > 0) {
+				if (user.coins < 10) {
+					return navigation.navigate("Home");
+				}
 
-			console.log(channel, user.email, receiver.email);
-			if (channel) {
-				//record call in backend
-				let history = {
-					persons: [receiver?.id],
-					sender: {
-						_id: user?.id,
-						name: user?.nickname,
-						email: user?.email,
-						avatar: user?.image.uri,
-						gender: user?.gender,
-						phone: user?.phone,
-					},
-					createdAt: new Date(),
-				};
-				db.collection("callhistory").doc(channel).set(history);
-				//send call notification incomingcall
-				var formData = new FormData();
-				formData.append("submitsubmitsubmit", "submitsubmitsubmit");
-				formData.append("email", receiver?.email);
-				formData.append("name", user?.nickname);
-				formData.append("caller", user?.email);
-				formData.append("type", "call");
-				formData.append("body", "Incoming Call");
-				formData.append("channel", channel);
-				// formData.append("agoraToken", "agoraToken"); // add this in php
+				console.log(channel, user.email, receiver.email);
+				if (channel) {
+					//record call in backend
+					let history = {
+						persons: [receiver?.id],
+						sender: {
+							_id: user?.id,
+							name: user?.nickname,
+							email: user?.email,
+							avatar: user?.image.uri,
+							gender: user?.gender,
+							phone: user?.phone,
+						},
+						createdAt: new Date(),
+					};
+					db.collection("callhistory").doc(channel).set(history);
+					//send call notification incomingcall
+					var formData = new FormData();
+					formData.append("submitsubmitsubmit", "submitsubmitsubmit");
+					formData.append("email", receiver?.email);
+					formData.append("name", user?.nickname);
+					formData.append("caller", user?.email);
+					formData.append("type", "call");
+					formData.append("body", "Incoming Call");
+					formData.append("channel", channel);
+					// formData.append("agoraToken", "agoraToken"); // add this in php
 
-				customPost(formData)
-					.then((res) => {})
-					.catch((err) => {});
+					customPost(formData)
+						.then((res) => {})
+						.catch((err) => {});
+				}
 			}
-		}
+		})();
 	}, [channel, user]);
 
 	useEffect(() => {
@@ -236,7 +238,7 @@ const VideoCall = ({ navigation, route: { params } }) => {
 		callbacks: {
 			EndCall: () => {
 				if (intervalValue !== undefined) {
-					clearInterval(intervalValue);
+					// clearInterval(intervalValue);
 				}
 				callEndedNotification();
 				setVideoCall(false);

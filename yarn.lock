@@ -1403,10 +1403,10 @@
     joi "^17.4.2"
     semver "^7.3.5"
 
-"@expo/eas-json@0.54.0":
-  version "0.54.0"
-  resolved "https://registry.yarnpkg.com/@expo/eas-json/-/eas-json-0.54.0.tgz#6b5dacdc3c373c53ff31a011f6e6f45852ea2a3d"
-  integrity sha512-zHWSJpra7EonGSt3xAwpgPlFd3EIqrDmwK9gCg2tokNHDq6sEiGFdDmTBJ57rEFdBKlWz7rJsTY8owKCETIg5g==
+"@expo/eas-json@0.55.0":
+  version "0.55.0"
+  resolved "https://registry.yarnpkg.com/@expo/eas-json/-/eas-json-0.55.0.tgz#485b9dbc47e00041536ce699d5c596e39dbac776"
+  integrity sha512-wTBFk5No7U7BE1gLT3UdWPGjH6U9D0RulZE/hlgO4J+DWuW1ZvOFy3L8pnqcenR2uhiuHucsSsMgB6sz4ZNHEw==
   dependencies:
     "@expo/eas-build-job" "0.2.77"
     "@expo/json-file" "8.2.36"
@@ -2434,10 +2434,10 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/masked-view/-/masked-view-0.1.10.tgz#5dda643e19e587793bc2034dd9bf7398ad43d401"
   integrity sha512-rk4sWFsmtOw8oyx8SD3KSvawwaK7gRBSEIy2TAwURyGt+3TizssXP1r8nx3zY+R7v2vYYHXZ+k2/GULAT/bcaQ==
 
-"@react-native-firebase/app@^15.1.1":
-  version "15.1.1"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-15.1.1.tgz#76100645b3228eed3c0d76521531fdc0e2b20f04"
-  integrity sha512-yLC+BZtXjHLzdwLyt5/ryrUcJhYK+F1mb3GAPUOB5yujM8Ndd0O2HXNoVvLPkhEjEdyvyxfRrvqcT21BKmuw3A==
+"@react-native-firebase/app@14.11.1":
+  version "14.11.1"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-14.11.1.tgz#5d3587bda0a8877863e59384a4d38f7ebc321835"
+  integrity sha512-fkvOK8c7e8MxIbfb2076kO3GtGUc3ZXNEkPyfamRKBnPgANpmnjQaTVIraXpeuIIOfjj5uDK4uw32znWiDusGA==
   dependencies:
     "@expo/config-plugins" "^4.1.5"
     opencollective-postinstall "^2.0.1"
@@ -3055,6 +3055,11 @@ aggregate-error@^3.0.0:
   dependencies:
     clean-stack "^2.0.0"
     indent-string "^4.0.0"
+
+agora-rn-uikit@3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/agora-rn-uikit/-/agora-rn-uikit-3.3.0.tgz#a7820ec49a36a7e88da4cf59e016ad03b4d7afd8"
+  integrity sha512-KuhTBOwRpHDYYDwSLliGnQqrCTSkAIlTLqRn0/KveLgjiTaGpi6zGUAa7yjOasorHYa/oFUt+euvk2MAoom/+Q==
 
 ajv-errors@^1.0.0:
   version "1.0.1"
@@ -5422,10 +5427,10 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
-eas-cli@^0.54.1:
-  version "0.54.1"
-  resolved "https://registry.yarnpkg.com/eas-cli/-/eas-cli-0.54.1.tgz#a4d5b57aef996cc2866f443c5ab1e5c2d78143ec"
-  integrity sha512-zSjERyWuklZCNEN990NCU7j67eXhKhT5Yquy6DU4spFDB1HnIUFLIdMolW/GmrHnLx19PZG6xKgO14yroztx9Q==
+eas-cli@^0.55.0:
+  version "0.55.0"
+  resolved "https://registry.yarnpkg.com/eas-cli/-/eas-cli-0.55.0.tgz#091266c4473c25aba886e71f4e408cf1412b8dc7"
+  integrity sha512-RwGOMB4jS2ng0FMzqV5BvP109gUc5qVO7fM0zDLSP9bxMIu3IyjVb4rPb2gBBJ9VSlCQjA/RoGG2KtfxrHxfeQ==
   dependencies:
     "@expo/apple-utils" "0.0.0-alpha.33"
     "@expo/code-signing-certificates" "0.0.2"
@@ -5433,7 +5438,7 @@ eas-cli@^0.54.1:
     "@expo/config-plugins" "4.1.4"
     "@expo/config-types" "45.0.0"
     "@expo/eas-build-job" "0.2.77"
-    "@expo/eas-json" "0.54.0"
+    "@expo/eas-json" "0.55.0"
     "@expo/json-file" "8.2.36"
     "@expo/multipart-body-parser" "1.1.0"
     "@expo/pkcs12" "0.0.8"
@@ -5897,6 +5902,42 @@ expo-constants@~13.1.0, expo-constants@~13.1.1:
   dependencies:
     "@expo/config" "^6.0.14"
     uuid "^3.3.2"
+
+expo-dev-client@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/expo-dev-client/-/expo-dev-client-1.0.0.tgz#89948d7f07adaceb4c77053535f5c4efc9a41a31"
+  integrity sha512-hqCf7IRaVOsiekFXoIifC+knGmS/hqnx6Kr+bdNbUi7UppJr7Wltww2+m0JQFIUSbjVpIEGLJIotClAi/1Vfew==
+  dependencies:
+    "@expo/config-plugins" "^4.0.14"
+    expo-dev-launcher "1.0.0"
+    expo-dev-menu "1.0.0"
+    expo-dev-menu-interface "0.7.0"
+    expo-manifests "~0.3.0"
+    expo-updates-interface "~0.6.0"
+
+expo-dev-launcher@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/expo-dev-launcher/-/expo-dev-launcher-1.0.0.tgz#86b302320739df16c17defbdf4a1dba8dde05684"
+  integrity sha512-yRqDdhCo7gBJorFSypkur1o1JHrIiG1eRnAbMb3E7LXg7RdgcirwXJrgt7WtnWTrYHKR//2BBlTlqFBIG5pteA==
+  dependencies:
+    "@expo/config-plugins" "^4.0.14"
+    expo-dev-menu "1.0.0"
+    resolve-from "^5.0.0"
+    semver "^7.3.5"
+
+expo-dev-menu-interface@0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/expo-dev-menu-interface/-/expo-dev-menu-interface-0.7.0.tgz#e141a671c7a34b921e7255653665d5e8489dab08"
+  integrity sha512-f/9gWLpuvXvQPeVBHH0T7qm4v2/Ynygs7dzebxqSWGDcCabfqRhuX+dv/t7CGu85m6waC9xYYnjLG7l8LC/i3Q==
+
+expo-dev-menu@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/expo-dev-menu/-/expo-dev-menu-1.0.0.tgz#2b6709bea829b2363e3b6bc3bf5fccecb59676b7"
+  integrity sha512-1420lih/NZR5NHcA2tgCfx6M2UoWBDJB9fY9Bb5/XDGXVeSsrubmu6Ck80Y4qdpDpPesQ/saZxVuilkfzBoNmQ==
+  dependencies:
+    "@expo/config-plugins" "^4.0.14"
+    expo-dev-menu-interface "0.7.0"
+    semver "^7.3.5"
 
 expo-eas-client@~0.2.0:
   version "0.2.1"
@@ -10960,6 +11001,11 @@ react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+
+react-native-agora@^3.5.3:
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/react-native-agora/-/react-native-agora-3.7.0.tgz#8bc5122792a78c3a6a31a4e183aa12fb3aec3aea"
+  integrity sha512-ZwZ/7byDyJ2iu87erhbYswvvdW7SwlWt195Cp8XMluvNunFb7pIVZyWxqcRfxc9XGN/CyrcP3/CaWpNJAFpXLg==
 
 react-native-animated-splash-screen@^2.0.5:
   version "2.0.5"

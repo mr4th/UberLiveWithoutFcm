@@ -1,4 +1,4 @@
-// import "expo-dev-client";
+import "expo-dev-client";
 // import messaging from "@react-native-firebase/messaging";
 import React, { useState, useEffect, useContext } from "react";
 // import AuthNavigator from "./app/component/navigation/AuthNavigator";
@@ -19,7 +19,7 @@ import { UserProvider, UserContext } from "./app/auth/context";
 // 	GetFCMToken,
 // } from "./app/utils/pushnotification_helper";
 import displayNotification from "./app/utils/useNotification";
-// import VideoCall from "./app/component/VideoCall";
+import VideoCall from "./app/component/VideoCall";
 import {
 	customPost,
 	save,
@@ -34,6 +34,8 @@ LogBox.ignoreLogs([
 	"Can't perform a React state update on an unmounted component.",
 	"Cannot update a component (`VideoCall`) while rendering a different component (`RtcConfigure`)",
 	"Possible Unhandled Promise Rejection (id: 0):",
+	"new NativeEventEmitter()` was called with a non-null argument without the required `removeListeners` method.",
+	"ViewPropTypes will be removed from React Native. Migrate to ViewPropTypes exported from 'deprecated-rea",
 ]);
 
 const App = () => {
@@ -72,7 +74,7 @@ const App = () => {
 		restoreToken();
 	}, []);
 	// useEffect(() => {
-		/*
+	/*
 		messaging().onMessage(async (remoteMessage) => {
 			if (remoteMessage?.data?.type == "chat") {
 				displayNotification(
@@ -210,7 +212,7 @@ const App = () => {
 			{call ? (
 				<SafeAreaProvider>
 					<UserProvider>
-						{/* <SplashCallScreen></SplashCallScreen> */}
+						<SplashCallScreen></SplashCallScreen>
 					</UserProvider>
 				</SafeAreaProvider>
 			) : (

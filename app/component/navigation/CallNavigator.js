@@ -1,30 +1,27 @@
-/*import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import Forms from "../Forms";
-import LoginScreen from "../LoginScreen";
-import WelcomeScreen from "../WelcomeScreen";
 import Chats from "../Chats";
 import { Home, Profile, Messages, Matches, CallHistory } from "../../screens";
-import BuyCoins from "../../screens";
+// import BuyCoins from "../../screens";
 import Coins from "../Coins";
 import VideoCall from "../VideoCall";
 import VideoCall2 from "../VideoCall2";
 import UserProfile from "../UserProfile";
 import AuthContext, { UserContext } from "../../auth/context";
-import CryptoPay from "../CryptoPay";
+// import CryptoPay from "../CryptoPay";
 
 const Stack = createNativeStackNavigator();
 
-import {
-	NotificationListener,
-	requestUserPermission,
-	GetFCMToken,
-} from "../../utils/pushnotification_helper";
+// import {
+// 	NotificationListener,
+// 	requestUserPermission,
+// 	GetFCMToken,
+// } from "../../utils/pushnotification_helper";
 import { useNavigation } from "@react-navigation/native";
-*/
+
 const CallNavigator = () => {
-/*	const { user } = useContext(UserContext);
+	const { user } = useContext(UserContext);
 
 	return (
 		<Stack.Navigator>
@@ -86,6 +83,5 @@ const CallNavigator = () => {
 			/>
 		</Stack.Navigator>
 	);
-	*/
 };
 export default CallNavigator;
