@@ -1,0 +1,62 @@
+{
+	"project_info": {
+		"project_number": "423411333874",
+		"project_id": "fir-app-e51bb",
+		"storage_bucket": "fir-app-e51bb.appspot.com"
+	},
+	"client": [
+		{
+			"client_info": {
+				"mobilesdk_app_id": "1:423411333874:android:94947768881fff9dad6e6b",
+				"android_client_info": {
+					"package_name": "com.uberlive"
+				}
+			},
+			"oauth_client": [
+				{
+					"client_id": "423411333874-66mrt68l1da9nk6s01v2ttb4oker3354.apps.googleusercontent.com",
+					"client_type": 1,
+					"android_info": {
+						"package_name": "com.uberlive",
+						"certificate_hash": "11ed55d90582d62ca7ae5aba89b764f1f5174c8c"
+					}
+				},
+				{
+					"client_id": "423411333874-jnv1d0hr5na3t6alah9qodhe3nmkpvdb.apps.googleusercontent.com",
+					"client_type": 1,
+					"android_info": {
+						"package_name": "com.uberlive",
+						"certificate_hash": "957b4a1edb124e7cf67c5a30506ded38dea6a37f"
+					}
+				},
+				{
+					"client_id": "423411333874-t32apvd7uftbq4l68j2p97naso42jat3.apps.googleusercontent.com",
+					"client_type": 3
+				}
+			],
+			"api_key": [
+				{
+					"current_key": "AIzaSyDVShUdfDQjMhrLOGZgv8iipbF29CS6GYQ"
+				}
+			],
+			"services": {
+				"appinvite_service": {
+					"other_platform_oauth_client": [
+						{
+							"client_id": "423411333874-t32apvd7uftbq4l68j2p97naso42jat3.apps.googleusercontent.com",
+							"client_type": 3
+						},
+						{
+							"client_id": "423411333874-resqs20r227q7jutgc1i0lb2uj4rktid.apps.googleusercontent.com",
+							"client_type": 2,
+							"ios_info": {
+								"bundle_id": "com.uberlive"
+							}
+						}
+					]
+				}
+			}
+		}
+	],
+	"configuration_version": "1"
+}

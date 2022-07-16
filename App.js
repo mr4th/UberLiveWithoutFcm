@@ -1,5 +1,5 @@
 import "expo-dev-client";
-// import messaging from "@react-native-firebase/messaging";
+import messaging from "@react-native-firebase/messaging";
 import React, { useState, useEffect, useContext } from "react";
 // import AuthNavigator from "./app/component/navigation/AuthNavigator";
 import Screen from "./app/component/Screen";
@@ -11,13 +11,12 @@ import authStorage from "./app/auth/storage";
 import { DeviceEventEmitter, Platform } from "react-native";
 // import IncomingCall from "react-native-incoming-call-android";
 
-// import { Provider } from "react-redux";
 import { UserProvider, UserContext } from "./app/auth/context";
-// import {
-// 	NotificationListener,
-// 	requestUserPermission,
-// 	GetFCMToken,
-// } from "./app/utils/pushnotification_helper";
+import {
+	NotificationListener,
+	requestUserPermission,
+	GetFCMToken,
+} from "./app/utils/pushnotification_helper";
 import displayNotification from "./app/utils/useNotification";
 import VideoCall from "./app/component/VideoCall";
 import {
@@ -64,18 +63,18 @@ const App = () => {
 			.catch((err) => {});
 	}, []);
 
-	// useEffect(() => {
-	// 	// requestUserPermission();
-	// 	// NotificationListener();
-	// 	// GetFCMToken();
-	// }, []);
+	useEffect(() => {
+		requestUserPermission();
+		NotificationListener();
+		GetFCMToken();
+	}, []);
 
 	useEffect(() => {
 		restoreToken();
 	}, []);
-	// useEffect(() => {
-	/*
+	useEffect(() => {
 		messaging().onMessage(async (remoteMessage) => {
+			console.log("Message received. ", remoteMessage);
 			if (remoteMessage?.data?.type == "chat") {
 				displayNotification(
 					"You Have A Chat",
@@ -100,13 +99,13 @@ const App = () => {
 
 				if (Platform.OS === "android") {
 					//Pop up code
-					IncomingCall.display(
-						"callUUIDv4", // Call UUID v4
-						remoteMessage.data.name, // Username
-						remoteMessage.data.icon, // Avatar URL
-						"Incomming Call", // Info text
-						19000 // Timeout for end call after 19s
-					);
+					// IncomingCall.display(
+					// 	"callUUIDv4", // Call UUID v4
+					// 	remoteMessage.data.name, // Username
+					// 	remoteMessage.data.icon, // Avatar URL
+					// 	"Incomming Call", // Info text
+					// 	19000 // Timeout for end call after 19s
+					// );
 				}
 				save("isMissedCall", true);
 
@@ -204,8 +203,7 @@ const App = () => {
 				}
 			);
 		});
-		*/
-	// }, []);
+	}, []);
 
 	return (
 		<Screen>
@@ -222,8 +220,6 @@ const App = () => {
 					</UserProvider>
 				</SafeAreaProvider>
 			)}
-			{/* <PushNotificatio /> */}
-			{/* <Notify /> */}
 		</Screen>
 	);
 };

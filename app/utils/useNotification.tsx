@@ -1,8 +1,8 @@
-/*import notifee, {
+import notifee, {
 	TimestampTrigger,
 	TriggerType,
 	RepeatFrequency,
-} from "@notifee/react-native"; */
+} from "@notifee/react-native";
 
 export const useNotification = () => {
 	async function displayNotification(title: string, body: string) {

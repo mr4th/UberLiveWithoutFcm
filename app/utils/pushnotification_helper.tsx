@@ -1,4 +1,4 @@
-// import messaging from "@react-native-firebase/messaging";
+import messaging from "@react-native-firebase/messaging";
 import { DeviceEventEmitter, TouchableOpacity } from "react-native";
 // import IncomingCall from "react-native-incoming-call-android";
 import { useNotification } from "./useNotification";
@@ -28,7 +28,6 @@ const {
 } = useNotification();
 
 export async function requestUserPermission() {
-	/*
 	const authStatus = await messaging().requestPermission();
 	const enabled =
 		authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
@@ -37,7 +36,7 @@ export async function requestUserPermission() {
 	if (enabled) {
 		console.log("Authorization status:", authStatus);
 	}
-}*/
+}
 export async function GetFCMToken(email = "0") {
 	let fcmtoken = await getSaved("fcmtoken");
 
@@ -51,7 +50,7 @@ export async function GetFCMToken(email = "0") {
 		if (!email) {
 			return;
 		}
-		try {/*
+		try {
 			const fcmtoken = await messaging().getToken();
 			if (fcmtoken) {
 				console.log("new token ", fcmtoken);
@@ -68,7 +67,7 @@ export async function GetFCMToken(email = "0") {
 					.then((res) => {})
 					.catch((err) => {});
 			} else {
-			} */
+			}
 		} catch (e) {
 			console.log(e, "error in fcmtoken");
 		}
@@ -77,9 +76,9 @@ export async function GetFCMToken(email = "0") {
 export const NotificationListener = () => {
 	// Assume a message-notification contains a "type" property in the data payload of the screen to open
 	// const navigation = useNavigation();
-	/*
+
 	messaging().onNotificationOpenedApp((remoteMessage) => {
-				if (remoteMessage.data.type == "chat") {
+		if (remoteMessage.data.type == "chat") {
 			displayNotification(
 				"You Have A Chat",
 				"From " + remoteMessage?.data?.name
@@ -92,7 +91,7 @@ export const NotificationListener = () => {
 			remoteMessage.notification
 		);
 	});
-*/
+
 	/*
 	// Check whether an initial notification is available
 	messaging()

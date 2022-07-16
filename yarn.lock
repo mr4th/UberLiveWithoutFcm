@@ -2101,6 +2101,11 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@notifee/react-native@^5.4.1":
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/@notifee/react-native/-/react-native-5.4.1.tgz#1d0a2b77a1dfd9730367599371aae93c3463ca89"
+  integrity sha512-2ET24EEWMf9et9akuGGr7tr+ycyixADW/Ck/KpaVZpjY1xGf8MTwjNDoIPVSAeGiEOw/YZt+KX9YC3LO8ZwSWg==
+
 "@npmcli/fs@^1.0.0":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@npmcli/fs/-/fs-1.1.1.tgz#72f719fe935e687c56a4faecf3c03d06ba593257"
@@ -2434,6 +2439,11 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/masked-view/-/masked-view-0.1.10.tgz#5dda643e19e587793bc2034dd9bf7398ad43d401"
   integrity sha512-rk4sWFsmtOw8oyx8SD3KSvawwaK7gRBSEIy2TAwURyGt+3TizssXP1r8nx3zY+R7v2vYYHXZ+k2/GULAT/bcaQ==
 
+"@react-native-firebase/analytics@^15.1.1":
+  version "15.1.1"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-15.1.1.tgz#eab1bdcbc3e5a6443f478d5717cb6b2feec91bd8"
+  integrity sha512-9OikjfOYO2byOIbbISbOC6LbIJCLAyfJKrQBMDmRpx5XdbJS37xLj2KI0aniObYZXrlkdcZ8t2HxrslGYikY8A==
+
 "@react-native-firebase/app@14.11.1":
   version "14.11.1"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-14.11.1.tgz#5d3587bda0a8877863e59384a4d38f7ebc321835"
@@ -2447,6 +2457,11 @@
   version "14.11.1"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/auth/-/auth-14.11.1.tgz#fc39a6ef58d4300b09a114bf256b688293d0d91d"
   integrity sha512-IzgFakon2jkuC4FEP8q9wruz8Yu0yem/Yk0v8IwndV2h/5lYmmij/f5Pyk74U3tadGOr9UrBsGkrWZMceiAjHQ==
+
+"@react-native-firebase/messaging@14.11.1":
+  version "14.11.1"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/messaging/-/messaging-14.11.1.tgz#891b92f5606386e83ae377e72659d0836ac7bd6b"
+  integrity sha512-nJjmA+Oku/rWM//y0hpsXJAM8dqkucZKyu71bZ8f4XCOU0ueqO/Qlyv8ylQ/2G+4+FCoSxncffxDdUfr+3nExA==
 
 "@react-native-picker/picker@2.4.0":
   version "2.4.0"

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
-// import messaging from "@react-native-firebase/messaging";
+import messaging from "@react-native-firebase/messaging";
 
 import Chats from "../Chats";
 import { Home, Profile, Messages, Matches, CallHistory } from "../../screens";
@@ -11,13 +11,13 @@ import VideoCall from "../VideoCall";
 import VideoCall2 from "../VideoCall2";
 import UserProfile from "../UserProfile";
 import AuthContext, { UserContext } from "../../auth/context";
-/*
+
 import {
 	NotificationListener,
 	requestUserPermission,
 	GetFCMToken,
 } from "../../utils/pushnotification_helper";
-*/
+
 const AuthNavigator = () => {
 	const { user } = useContext(UserContext);
 	const Drawer = createNativeStackNavigator();
@@ -28,7 +28,7 @@ const AuthNavigator = () => {
 	useEffect(() => {
 		console.log("I am in Auth!", user);
 		// Assume a message-notification contains a "type" property in the data payload of the screen to open
-		/*
+
 		messaging().onNotificationOpenedApp((remoteMessage) => {
 			console.log(
 				"Notification caused app to open from background state:",
@@ -52,7 +52,6 @@ const AuthNavigator = () => {
 				}
 				setLoading(false);
 			});
-			*/
 	}, []);
 
 	if (loading) {
