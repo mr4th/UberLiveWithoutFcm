@@ -96,40 +96,43 @@ const Home = ({ navigation }) => {
 				setPreloader(false);
 			});
 	}
-
 	useEffect(() => {
-		( ()=>{const res = getSaved("user")
-			.then((res) => {
-				if (res == null) {
-					return navigation.navigate("Login");
-				}
-				setCoins(res.coins);
-				const values = {
-					id: res.id,
-					name: res.nickname,
-					image: { uri: res.image },
-				};
-				console.log(res, "testing");
-				setUser(values);
-				getAllusers(res.id)
-					.then((d) => setData(d))
-					.catch((err) => {
-						setPreloader(false);
-						aler(`${err}`);
-						if (err.indexOf("Login") > -1) {
-							logout();
-						}
-					});
-			})
-			.catch((err) => {
-				setPreloader(false);
-				aler(`${err}`);
+		console.log("HOme Screen");
+	}, []);
+	useEffect(() => {
+		(() => {
+			const res = getSaved("user")
+				.then((res) => {
+					if (res == null) {
+						return navigation.navigate("Login");
+					}
+					setCoins(res.coins);
+					const values = {
+						id: res.id,
+						name: res.nickname,
+						image: { uri: res.image },
+					};
+					console.log(res, "testing");
+					setUser(values);
+					getAllusers(res.id)
+						.then((d) => setData(d))
+						.catch((err) => {
+							setPreloader(false);
+							aler(`${err}`);
+							if (err.indexOf("Login") > -1) {
+								logout();
+							}
+						});
+				})
+				.catch((err) => {
+					setPreloader(false);
+					aler(`${err}`);
 
-				if (err.indexOf("Login") > -1) {
-					logout();
-				}
-			});
-	})()
+					if (err.indexOf("Login") > -1) {
+						logout();
+					}
+				});
+		})();
 		// });
 		// if(!user){navigation.navigate("Login")}
 	}, []);

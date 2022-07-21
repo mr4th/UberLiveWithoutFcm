@@ -52,6 +52,14 @@ const VideoCall2 = ({ navigation, route: { params } }) => {
 			customPost(formData)
 				.then((res) => {})
 				.catch((err) => {});
+
+			//End  Call Sending notfication to myself to end the call
+
+			formData.append("email", user?.email);
+			formData.append("type", "changescreen");
+			customPost(formData)
+				.then((res) => {})
+				.catch((err) => {});
 		}
 
 		deleteItem("caller");

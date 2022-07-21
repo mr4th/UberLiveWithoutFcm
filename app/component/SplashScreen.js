@@ -7,7 +7,7 @@ import AuthNavigator from "./navigation/AuthNavigator";
 import UnAuthNavigator from "./navigation/UnAuthNavigator";
 import { LogBox } from "react-native";
 // Logo....
-import icon1 from "../assets/icon1.png";
+import icon from "../assets/icon.png";
 import colors from "../config/colors";
 
 const BGColor = colors.primary;
@@ -19,6 +19,7 @@ import AuthContext, { UserContext } from "../auth/context";
 LogBox.ignoreLogs(["Setting a timer"]);
 
 export default function SplashScreen() {
+	console.log("I am in SplashScreen");
 	// SafeArea Value...
 	const edges = useSafeAreaInsets();
 	const { login, user } = useContext(UserContext);
@@ -125,7 +126,7 @@ export default function SplashScreen() {
 					}}
 				>
 					<Animated.Image
-						source={icon1}
+						source={icon}
 						style={{
 							width: 100,
 							height: 100,

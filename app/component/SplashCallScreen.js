@@ -6,7 +6,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import CallNavigator from "./navigation/CallNavigator";
 import { LogBox } from "react-native";
 // Logo....
-import icon1 from "../assets/icon1.png";
+import icon from "../assets/icon.png";
 import colors from "../config/colors";
 
 const BGColor = colors.primary;
@@ -18,6 +18,7 @@ import AuthContext, { UserContext } from "../auth/context";
 LogBox.ignoreLogs(["Setting a timer"]);
 
 export default function SplashCallScreen() {
+	console.log("I am in SplashCallScreen");
 	// SafeArea Value...
 	const edges = useSafeAreaInsets();
 	const { login, user } = useContext(UserContext);
@@ -53,6 +54,7 @@ export default function SplashCallScreen() {
 		new Animated.Value(Dimensions.get("window").height)
 	).current;
 
+	//fetching user data from storage
 	// Animation Done....
 	useEffect(() => {
 		// Starting Animation after 500ms....
@@ -126,7 +128,7 @@ export default function SplashCallScreen() {
 					}}
 				>
 					<Animated.Image
-						source={icon1}
+						source={icon}
 						style={{
 							width: 100,
 							height: 100,
