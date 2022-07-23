@@ -11097,6 +11097,11 @@ react-native-easy-grid@0.1.5:
   dependencies:
     lodash "^4.11.1"
 
+react-native-full-screen-notification-incoming-call@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-full-screen-notification-incoming-call/-/react-native-full-screen-notification-incoming-call-0.1.1.tgz#50a57442e1ab9f32ff7380f90b6a7cdad4a7d39e"
+  integrity sha512-px0i0IR62yKW5CDDMnOTzBGawVultprVcrmHxesIxI2B/iZHjcAEYEz0XmMghK8X5voitNI/Sy6wx4+ayMUgkw==
+
 react-native-gesture-handler@~2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-2.2.1.tgz#672258aa5a40c92a97c736bdde0a8bd6c8c6c692"

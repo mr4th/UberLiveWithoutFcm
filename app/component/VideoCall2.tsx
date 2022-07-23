@@ -9,7 +9,7 @@ import {
 import React, { useEffect, useState } from "react";
 import AgoraUIKit, { PropsInterface } from "agora-rn-uikit";
 import Screen from "./Screen";
-import { BackHandler } from "react-native";
+import { BackHandler, DevSettings } from "react-native";
 import {
 	getSaved,
 	getcoin,
@@ -68,9 +68,12 @@ const VideoCall2 = ({ navigation, route: { params } }) => {
 		deleteItem("channel");
 		deleteItem("missedcall");
 		deleteItem("endcall");
+
+		save("reload", "reload");
+		navigation.navigate("Home");
 	};
 
-	BackHandler.addEventListener("hardwareBackPress", function () {
+	/*BackHandler.addEventListener("hardwareBackPress", function () {
 		//callend call function
 		callEndedNotification();
 		navigation.reset({
@@ -83,7 +86,7 @@ const VideoCall2 = ({ navigation, route: { params } }) => {
 		});
 
 		return true;
-	});
+	});*/
 
 	useEffect(() => {
 		save("endcall", false);
@@ -98,7 +101,7 @@ const VideoCall2 = ({ navigation, route: { params } }) => {
 	useEffect(() => {
 		getSaved("user").then((res) => {
 			if (res == null) {
-				return navigation.navigate("Home");
+				// return navigation.navigate("Home");
 			}
 			setUser(res);
 		});
@@ -136,7 +139,7 @@ const VideoCall2 = ({ navigation, route: { params } }) => {
 						//end call and send notification
 						callEndedNotification(false);
 						setVideoCall(false);
-						setTimeout(() => navigation.navigate("Home"), 700);
+						// setTimeout(() => navigation.navigate("Home"), 700);
 					}
 				})
 				.catch((err) => {});
@@ -161,7 +164,7 @@ const VideoCall2 = ({ navigation, route: { params } }) => {
 					clearInterval(intervalValue);
 				}
 
-				setTimeout(() => navigation.navigate("Home"), 700);
+				// setTimeout(() => navigation.navigate("Home"), 700);
 			},
 		},
 	};

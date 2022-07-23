@@ -10,6 +10,7 @@
   <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
   <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
   <uses-permission android:name="android.permission.CALL_PHONE"/>
+  <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT"/>
   <queries>
     <intent>
       <action android:name="android.intent.action.VIEW"/>
@@ -23,6 +24,8 @@
     <meta-data android:name="expo.modules.updates.EXPO_UPDATES_CHECK_ON_LAUNCH" android:value="ALWAYS"/>
     <meta-data android:name="expo.modules.updates.EXPO_UPDATES_LAUNCH_WAIT_MS" android:value="0"/>
     <meta-data android:name="expo.modules.updates.EXPO_UPDATE_URL" android:value="https://exp.host/@4th/uberLive"/>
+    <activity android:name="com.reactnativefullscreennotificationincomingcall.IncomingCallActivity" android:theme="@style/incomingCall" android:showOnLockScreen="true" android:taskAffinity="" android:launchMode="singleTask" android:excludeFromRecents="true"/>
+    <activity android:name="com.facebook.react.devsupport.DevSettingsActivity"/>
     <activity android:name=".MainActivity" android:label="@string/app_name" android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode" android:launchMode="singleTask" android:windowSoftInputMode="adjustResize" android:theme="@style/Theme.App.SplashScreen" android:exported="true" android:screenOrientation="portrait">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
@@ -37,7 +40,7 @@
         <data android:scheme="exp+uberlive"/>
       </intent-filter>
     </activity>
-    <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" android:exported="true"/>
+    <service android:name="com.reactnativefullscreennotificationincomingcall.IncomingCallService" android:enabled="true" android:stopWithTask="false" android:exported="true"/>
     <service android:name="io.wazo.callkeep.VoiceConnectionService" android:label="Wazo" android:permission="android.permission.BIND_TELECOM_CONNECTION_SERVICE" android:foregroundServiceType="phoneCall"/>
     <service android:name="io.wazo.callkeep.RNCallKeepBackgroundMessagingService"/>
   </application>

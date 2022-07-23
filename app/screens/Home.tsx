@@ -7,6 +7,7 @@ import {
 	ScrollView,
 	TouchableOpacity,
 	FlatList,
+	DevSettings,
 } from "react-native";
 import CardStack, { Card } from "react-native-card-stack-swiper";
 import { City, Filters, CardItem } from "../components";
@@ -26,6 +27,7 @@ import {
 	get,
 	addFavourite,
 	firebase,
+	deleteItem,
 } from "../../firebase";
 import { PanGestureHandler } from "react-native-gesture-handler";
 import Preloader from "../component/Preloader";
@@ -61,7 +63,16 @@ const Home = ({ navigation }) => {
 			})
 			.catch((err) => {});
 	});
-
+	// useEffect(() => {
+	// 	getSaved("reload")
+	// 		.then((res) => {
+	// 			if (res == "reload") {
+	// deleteItem("reload")
+	// 				DevSettings.reload();
+	// 			}
+	// 		})
+	// 		.catch((err) => {});
+	// }, []);
 	useEffect(() => {
 		firebase.auth().onAuthStateChanged((user) => {
 			if (user) {

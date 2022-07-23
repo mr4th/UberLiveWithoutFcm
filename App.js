@@ -9,7 +9,8 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { LogBox } from "react-native";
 import authStorage from "./app/auth/storage";
 import { DeviceEventEmitter, Platform } from "react-native";
-// import IncomingCall from "react-native-incoming-call-android";
+import RNNotificationCall from "react-native-full-screen-notification-incoming-call";
+import { v4 as uuidv4 } from "uuid";
 
 import { UserProvider, UserContext } from "./app/auth/context";
 import {
@@ -39,6 +40,7 @@ LogBox.ignoreLogs([
 
 const App = () => {
 	const [call, setCall] = useState(false);
+	const [messagingListener, setMessagingListener] = useState(false);
 
 	const restoreToken = async () => {
 		const token = await authStorage.getToken();
@@ -46,12 +48,6 @@ const App = () => {
 
 		return token;
 	};
-
-	useEffect(() => {
-		getSaved("user")
-			.then((user) => {})
-			.catch((err) => {});
-	}, []);
 
 	useEffect(() => {
 		getSaved("caller")
@@ -73,85 +69,106 @@ const App = () => {
 		restoreToken();
 	}, []);
 	useEffect(() => {
-		messaging().onMessage(async (remoteMessage) => {
-			console.log("Message received. ", remoteMessage);
-			if (remoteMessage?.data?.type == "chat") {
-				displayNotification(
-					"You Have A Chat",
-					"From " + remoteMessage?.data?.name
-				);
-			} else if (remoteMessage?.data?.type === "call") {
-				//to prevent fcm multiple call. Noted: clear after callismissed, call iscut here, or ended in videocall2
-				let checkCaller = await getSaved("caller");
-				if (checkCaller) {
-					// console.log("caller is same");
-					if (checkCaller != remoteMessage?.data?.caller) {
-						//send notification that user is on another call (body will be am alert)
+		if (messagingListener === false) {
+			messaging().onMessage(async (remoteMessage) => {
+				console.log("Message received. ", remoteMessage);
+				if (remoteMessage?.data?.type == "chat") {
+					displayNotification(
+						"You Have A Chat",
+						"From " + remoteMessage?.data?.name
+					);
+				} else if (remoteMessage?.data?.type === "call") {
+					//to prevent fcm multiple call. Noted: clear after callismissed, call iscut here, or ended in videocall2
+					let checkCaller = await getSaved("caller");
+					if (checkCaller) {
+						// console.log("caller is same");
+						if (checkCaller != remoteMessage?.data?.caller) {
+							//send notification that user is on another call (body will be am alert)[to be done late]
+
+							//Talking with the same person already so not a miss call
+							try {
+								const db = firebase.firestore();
+								db.collection("callhistory")
+									.doc(remoteMessage.data.channel)
+									.delete();
+							} catch (err) {}
+						}
+						// return;
 					}
-					return;
+					// console.log("caller is different");
+					// Call should end when (me) the receiver termiantes the call
+					save("endcall", false);
+					//To use within this component
+
+					//To know when to close the pop up if the user ends it before i pick
+
+					// const uniqueString = uuidv4();
+					// console.log("uniqueString", uniqueString);
+					RNNotificationCall.displayNotification(
+						"22221a97-8eb4-4ac2-b2cf-0a3c0b9100ad",
+						// uniqueString,
+						null,
+						19000,
+						{
+							channelId: "com.uberlive.incomingcall",
+							channelName: "Incoming video call",
+							notificationIcon: "ic_launcher", //mipmap
+							notificationTitle: "Linh Vo",
+							notificationBody: "Incoming video call From Uberlive",
+							answerText: "Answer",
+							declineText: "Decline",
+							notificationColor: "colorAccent",
+						}
+					);
+
+					save("isMissedCall", true);
+
+					// setIncoming(true);
+
+					setTimeout(() => {
+						getSaved("isMissedCall")
+							.then((isMissedCall) => {
+								if (isMissedCall) {
+									deleteItem("isMissedCall");
+									addHistory("callhistory");
+									displayNotification("Missed Call", remoteMessage.data.body);
+								}
+							})
+							.catch((err) => {});
+					}, 20000);
+				} else if (remoteMessage?.data?.type === "endcall") {
+					// Terminate incoming activity. Should be called when call expired.
+
+					save("endcall", true);
+					setTimeout(() => setCall(false), 2500);
+
+					deleteItem("caller");
+					deleteItem("channel");
+					deleteItem("missedcall");
 				}
-				// console.log("caller is different");
-				// Call should end when (me) the receiver termiantes the call
-				save("endcall", false);
-				//To use within this component
-
-				//To know when to close the pop up if the user ends it before i pick
-
-				if (Platform.OS === "android") {
-					//Pop up code
-					// IncomingCall.display(
-					// 	"callUUIDv4", // Call UUID v4
-					// 	remoteMessage.data.name, // Username
-					// 	remoteMessage.data.icon, // Avatar URL
-					// 	"Incomming Call", // Info text
-					// 	19000 // Timeout for end call after 19s
-					// );
+				if (remoteMessage?.data?.type === "changescreen") {
+					console.log("I am about to change screen");
+					// displayNotification("Missed Call", "From " + remoteMessage.data.name);
+					setCall(false);
+				} else if (remoteMessage?.data?.type === "answercall") {
+					// Call Received so set missed call to false so that call will not terminate in caller videocall component
+					save("missedcall", false);
 				}
-				save("isMissedCall", true);
 
-				// setIncoming(true);
+				// Listen to headless action events
 
-				setTimeout(() => {
-					getSaved("isMissedCall")
-						.then((isMissedCall) => {
-							if (isMissedCall) {
-								deleteItem("isMissedCall");
-								addHistory("callhistory");
-								displayNotification("Missed Call", remoteMessage.data.body);
-							}
-						})
-						.catch((err) => {});
-				}, 20000);
-			} else if (remoteMessage?.data?.type === "endcall") {
-				// Terminate incoming activity. Should be called when call expired.
-
-				save("endcall", true);
-				setTimeout(() => setCall(false), 2500);
-
-				deleteItem("caller");
-				deleteItem("channel");
-				deleteItem("missedcall");
-			}
-			if (remoteMessage?.notification?.title === "missedcall") {
-				// displayNotification("Missed Call", "From " + remoteMessage.data.name);
-			} else if (remoteMessage?.data?.type === "answercall") {
-				// Call Received so set missed call to false so that call will not terminate in caller videocall component
-				save("missedcall", false);
-			}
-
-			// Listen to headless action events
-
-			// deleteItem("endCallListener");
-			let endCallListener = DeviceEventEmitter.addListener(
-				"endCall",
-				(payload) => {
+				// deleteItem("endCallListener");
+				RNNotificationCall.addEventListener("endCall", (payload) => {
 					deleteItem("isMissedCall");
-					const db = firebase.firestore();
+					// RNNotificationCall.hideNotification();
 					// console.log(remoteMessage.data.channel, "channel for firebase");
 					if (remoteMessage.data.channel) {
-						db.collection("callhistory")
-							.doc(remoteMessage.data.channel)
-							.delete();
+						try {
+							const db = firebase.firestore();
+							db.collection("callhistory")
+								.doc(remoteMessage.data.channel)
+								.delete();
+						} catch (err) {}
 					}
 					//send endcall notification
 					var formData = new FormData();
@@ -164,45 +181,43 @@ const App = () => {
 					customPost(formData)
 						.then((res) => {})
 						.catch((err) => {});
-					endCallListener.remove();
-				}
-			);
 
-			let answerCallListener = DeviceEventEmitter.addListener(
-				"answerCall",
-				async (payload) => {
+					RNNotificationCall.removeEventListener("endCall");
+				});
+
+				RNNotificationCall.addEventListener("answer", async (payload) => {
 					deleteItem("isMissedCall");
-
+					// RNNotificationCall.hideNotification();
 					//save this so that when I end the call in videocall2, I can send fcm to the caller
 					await save("caller", remoteMessage?.data?.caller);
 
 					await save("channel", remoteMessage?.data?.channel);
 
 					// save("agoraToken", remoteMessage?.data?.agoraToken);
+					if (remoteMessage.data.channel) {
+						try {
+							const db = firebase.firestore();
+							db.collection("callhistory")
+								.doc(remoteMessage.data.channel)
+								.delete();
+						} catch (err) {}
 
-					if (payload.isHeadless) {
-						// Called from killed state
-						IncomingCall.openAppFromHeadlessMode(payload.uuid);
-					} else {
-						// Called from background state
-						IncomingCall.backToForeground();
+						var formData = new FormData();
+						formData.append("submitsubmitsubmit", "submitsubmitsubmit");
+						formData.append("name", remoteMessage.data.name);
+						formData.append("email", remoteMessage.data.caller);
+						formData.append("type", "answercall");
+						formData.append("body", "Answer Call");
+
+						customPost(formData)
+							.then((res) => {})
+							.catch((err) => {});
+						setCall(true);
+						RNNotificationCall.removeEventListener("answer");
 					}
-
-					var formData = new FormData();
-					formData.append("submitsubmitsubmit", "submitsubmitsubmit");
-					formData.append("name", remoteMessage.data.name);
-					formData.append("email", remoteMessage.data.caller);
-					formData.append("type", "answercall");
-					formData.append("body", "Answer Call");
-
-					customPost(formData)
-						.then((res) => {})
-						.catch((err) => {});
-					setCall(true);
-					answerCallListener.remove();
-				}
-			);
-		});
+				});
+			});
+		}
 	}, []);
 
 	return (
